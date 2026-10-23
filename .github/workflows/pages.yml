@@ -1,4 +1,4 @@
-name: INFERNO Pages
+name: INFERNO Build Validation
 
 on:
   push:
@@ -7,11 +7,9 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: inferno-pages
+  group: inferno-build
   cancel-in-progress: true
 
 jobs:
@@ -36,21 +34,13 @@ jobs:
           grep -q 'inferno-core.js' index.html
           grep -q 'inferno-capabilities.js' index.html
           ! grep -qi 'JARVIS-WEB' index.html
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Upload static site artifact
+        uses: actions/upload-artifact@v4
         with:
-          enablement: true
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy INFERNO
-        id: deployment
-        uses: actions/deploy-pages@v4
+          name: inferno-static-site
+          path: |
+            index.html
+            inferno-core.js
+            inferno-capabilities.js
+            README.md
+            LICENSE
