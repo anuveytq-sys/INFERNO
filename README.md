@@ -12,7 +12,7 @@ INFERNO is separated from JARVIS-WEB so its interface and command engine run ind
 
 ## Capability routing and task execution
 
-INFERNO exposes a 200-entry capability catalogue and now includes a concrete browser-side execution layer. It directly handles common commands for supported website handoffs and web search, local arithmetic, local date/time, reading the current page, scrolling, back navigation, browser-local notes, clipboard copy (when permitted), execution history, and in-page reminders. Commands outside those local handlers are passed to the existing capability router and configured OpenRouter model. The HUD shows results and records execution receipts where possible.
+INFERNO exposes a 200-entry capability catalogue and includes browser-side execution handlers for supported website handoffs and web search, local arithmetic, local date/time, reading the current page, scrolling, back navigation, browser-local notes, clipboard copy (when permitted), execution history, and in-page reminders. Settings also provides explicit microphone/camera/location/notification permission requests, optional service configuration fields, and a local contact vault with device contact selection where supported, CSV import/export, local saving, and a call handoff that opens the device dialer for the user to confirm. Commands outside the local handlers are passed to the existing capability router and configured OpenRouter model.
 
 Try commands such as `open GitHub`, `search for orbital mechanics`, `calculate (12 + 8) * 3`, `what time is it`, `save note: inspect the reactor`, `list notes`, `read this page`, `scroll to bottom`, `copy mission ready`, `set reminder in 2 minutes to check telemetry`, and `show execution log`.
 
