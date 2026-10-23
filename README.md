@@ -10,11 +10,13 @@ INFERNO is separated from JARVIS-WEB so its interface and command engine run ind
 - Use **🎙 Wake Word** to enable or disable voice recognition. The microphone button on the HUD also toggles the listener.
 - Type a command in the bottom console and press **Execute**. Use `show capabilities` to list the registered capabilities.
 
-## Capability routing and honest limits
+## Capability routing and task execution
 
-The current capability engine registers the 200-feature Inferno catalogue from the original project. Commands are routed to local browser functionality first when a suitable local handler exists; reasoning, drafting, research, planning, and analysis can use the configured OpenRouter model. Browser navigation uses browser handoff, not privileged operating-system control.
+INFERNO exposes a 200-entry capability catalogue and now includes a concrete browser-side execution layer. It directly handles common commands for supported website handoffs and web search, local arithmetic, local date/time, reading the current page, scrolling, back navigation, browser-local notes, clipboard copy (when permitted), execution history, and in-page reminders. Commands outside those local handlers are passed to the existing capability router and configured OpenRouter model. The HUD shows results and records execution receipts where possible.
 
-Some capability names describe bridges or plans rather than self-contained device functions. Vision/OCR needs an image/vision integration; microphone access needs browser support and permission; calls, messages, uploads, and calendar integrations need their relevant service, authorization, and explicit confirmation. A static build does not mean every external integration has been tested on every device.
+Try commands such as `open GitHub`, `search for orbital mechanics`, `calculate (12 + 8) * 3`, `what time is it`, `save note: inspect the reactor`, `list notes`, `read this page`, `scroll to bottom`, `copy mission ready`, `set reminder in 2 minutes to check telemetry`, and `show execution log`.
+
+**Important reality check:** the catalogue is not proof that all 200 tasks are independently integrated and flawless. A static browser app cannot silently control a phone/PC, make calls, send messages, upload files, inspect arbitrary camera images, or access private accounts without the corresponding API/module, permissions, and sometimes explicit confirmation. Those tasks are routed to available integrations or AI assistance and should report blockers rather than claim success. Browser reminders require the page to remain open. For secure production use, move the OpenRouter key behind a server-side proxy; a browser-stored key is accessible to scripts running on this origin.
 
 ## OpenRouter setup
 
