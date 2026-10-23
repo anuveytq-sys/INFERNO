@@ -92,7 +92,8 @@ var features=[
 'Minimal-change patch planner',
 'Feature acceptance criteria',
 'User feedback triage',
-'Command alias discovery'
+'Command alias discovery',
+'Execution receipts and task ledger'
 ];
 var state={active:false,apiKey:'',model:'openai/gpt-4o-mini',voiceRate:.86,voicePitch:.72,voiceName:'',speech:true};
 try{state.apiKey=localStorage.getItem('jarvisOpenRouterKey')||sessionStorage.getItem('jarvisOpenRouterKey')||localStorage.getItem('jarvis_inferno_openrouter_key')||'';state.model=localStorage.getItem('jarvisOpenRouterModel')||sessionStorage.getItem('jarvisOpenRouterModel')||localStorage.getItem('jarvis_inferno_model')||'openrouter/free';state.voiceName=localStorage.getItem('jarvis_inferno_voice')||'';}catch(_){try{state.apiKey=sessionStorage.getItem('jarvisOpenRouterKey')||'';state.model=sessionStorage.getItem('jarvisOpenRouterModel')||'openrouter/free';}catch(__){}}
